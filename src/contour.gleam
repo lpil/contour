@@ -211,7 +211,7 @@ fn loop(in0: List(t.Token), out: List(Token)) -> List(Token) {
     [t.RightArrow, ..in] -> loop(in, [Other("->"), ..out])
     [t.RightBrace, ..in] -> loop(in, [Other("}"), ..out])
     [t.RightParen, ..in] -> loop(in, [Other(")"), ..out])
-    [t.RightSquare, ..in] -> loop(in, [Other("["), ..out])
+    [t.RightSquare, ..in] -> loop(in, [Other("]"), ..out])
     [t.VBar, ..in] -> loop(in, [Other("|"), ..out])
 
     [t.Name(n), ..in] -> loop(in, [Other(n), ..out])
