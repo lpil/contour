@@ -1,0 +1,19 @@
+---
+version: 1.2.6
+title: tokens_0
+file: ./test/contour_test.gleam
+test_name: tokens_0_test
+---
+import gleam/io
+
+pub fn main() {
+  io.println("hello, friend!")
+}
+
+---
+
+[33mimport[39m[0m [0m[36mgleam/io[39m[0m
+
+[0m[33mpub[39m[0m [0m[33mfn[39m[0m [0m[34mmain[39m[0m([0m[0m)[0m[0m [0m[0m{[0m[0m
+  [0m[36mio[39m[0m.[0m[34mprintln[39m[0m([0m[32m"hello, friend!"[39m[0m)[0m[0m
+[0m[0m}[0m

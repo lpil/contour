@@ -1,0 +1,20 @@
+name = "contour"
+version = "1.0.0"
+gleam = ">= 1.9.0"
+description = "A Gleam syntax highlighter in Gleam"
+licences = ["Apache-2.0"]
+
+repository = { type = "github", user = "lpil", repo = "contour" }
+links = [
+  { title = "Sponsor", href = "https://github.com/sponsors/lpil" },
+]
+
+[dependencies]
+gleam_stdlib = ">= 0.44.0 and < 2.0.0"
+glexer = ">= 2.2.1 and < 3.0.0"
+gleam_community_ansi = ">= 1.4.3 and < 2.0.0"
+
+[dev-dependencies]
+gleeunit = ">= 1.0.0 and < 2.0.0"
+birdie = ">= 1.2.6 and < 2.0.0"
+pprint = ">= 1.0.4 and < 2.0.0"

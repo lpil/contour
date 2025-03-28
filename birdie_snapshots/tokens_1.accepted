@@ -1,0 +1,35 @@
+---
+version: 1.2.6
+title: tokens_1
+file: ./test/contour_test.gleam
+test_name: tokens_1_test
+---
+fn spawn_task(i) {
+  task.async(fn() {
+    let n = int.to_string(i)
+    io.println("Hello from " <> n)
+  })
+}
+
+pub fn main() {
+  // Run loads of threads, no problem
+  list.range(0, 200_000)
+  |> list.map(spawn_task)
+  |> list.each(task.await_forever)
+}
+
+---
+
+[33mfn[39m[0m [0m[34mspawn_task[39m[0m([0m[0mi[0m[0m)[0m[0m [0m[0m{[0m[0m
+  [0m[36mtask[39m[0m.[0m[34masync[39m[0m([0m[33mfn[39m[0m([0m[0m)[0m[0m [0m[0m{[0m[0m
+    [0m[33mlet[39m[0m [0m[0mn[0m[0m [0m[0m=[0m[0m [0m[36mint[39m[0m.[0m[34mto_string[39m[0m([0m[0mi[0m[0m)[0m[0m
+    [0m[36mio[39m[0m.[0m[34mprintln[39m[0m([0m[32m"Hello from "[39m[0m [0m[35m<>[39m[0m [0m[0mn[0m[0m)[0m[0m
+  [0m[0m}[0m[0m)[0m[0m
+[0m[0m}[0m[0m
+
+[0m[33mpub[39m[0m [0m[33mfn[39m[0m [0m[34mmain[39m[0m([0m[0m)[0m[0m [0m[0m{[0m[0m
+  [0m[3m[90m// Run loads of threads, no problem[39m[23m[0m
+  [0m[36mlist[39m[0m.[0m[34mrange[39m[0m([0m[32m0[39m[0m,[0m[0m [0m[32m200_000[39m[0m)[0m[0m
+  [0m[35m|>[39m[0m [0m[36mlist[39m[0m.[0m[34mmap[39m[0m([0m[0mspawn_task[0m[0m)[0m[0m
+  [0m[35m|>[39m[0m [0m[36mlist[39m[0m.[0m[34meach[39m[0m([0m[0mtask[0m[0m.[0m[0mawait_forever[0m[0m)[0m[0m
+[0m[0m}[0m
