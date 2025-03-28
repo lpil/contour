@@ -16,12 +16,12 @@ pub fn register_event_handler() {
 
 ---
 
-<span class=hl-keyword>@external</span>(erlang, <span class=hl-string>"Elixir.HPAX"</span>, <span class=hl-string>"new"</span>)
-<span class=hl-keyword>pub</span> <span class=hl-keyword>fn</span> <span class=hl-function>new</span>(size: <span class=hl-variant>Int</span>) -> <span class=hl-variant>Table</span>
+<span class=hl-keyword>@external</span>(erlang, <span class=hl-string>&quot;Elixir.HPAX&quot;</span>, <span class=hl-string>&quot;new&quot;</span>)
+<span class=hl-keyword>pub</span> <span class=hl-keyword>fn</span> <span class=hl-function>new</span>(size: <span class=hl-variant>Int</span>) -&gt; <span class=hl-variant>Table</span>
 
 <span class=hl-keyword>pub</span> <span class=hl-keyword>fn</span> <span class=hl-function>register_event_handler</span>() {
-  <span class=hl-keyword>let</span> el = <span class=hl-module>document</span>.<span class=hl-function>query_selector</span>(<span class=hl-string>"a"</span>)
+  <span class=hl-keyword>let</span> el = <span class=hl-module>document</span>.<span class=hl-function>query_selector</span>(<span class=hl-string>&quot;a&quot;</span>)
   <span class=hl-module>element</span>.<span class=hl-function>add_event_listener</span>(el, <span class=hl-keyword>fn</span>() {
-    <span class=hl-module>io</span>.<span class=hl-function>println</span>(<span class=hl-string>"Clicked!"</span>)
+    <span class=hl-module>io</span>.<span class=hl-function>println</span>(<span class=hl-string>&quot;Clicked!&quot;</span>)
   })
 }

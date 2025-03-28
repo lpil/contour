@@ -23,6 +23,10 @@ pub fn main() {
   contour.to_ansi(source)
   |> io.println
 
+  // Convert to HTML with CSS classes for colours
+  let html = contour.to_ansi(source)
+  io.println("<pre><code>" <> html <> "</code></pre>")
+
   // Or convert to tokens and the highlight in any way you desire
   contour.to_tokens(source)
   |> do_something_with_tokens

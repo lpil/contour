@@ -23,13 +23,13 @@ pub fn main() {
 <span class=hl-keyword>fn</span> <span class=hl-function>spawn_task</span>(i) {
   <span class=hl-module>task</span>.<span class=hl-function>async</span>(<span class=hl-keyword>fn</span>() {
     <span class=hl-keyword>let</span> n = <span class=hl-module>int</span>.<span class=hl-function>to_string</span>(i)
-    <span class=hl-module>io</span>.<span class=hl-function>println</span>(<span class=hl-string>"Hello from "</span> <span class=hl-operator><></span> n)
+    <span class=hl-module>io</span>.<span class=hl-function>println</span>(<span class=hl-string>&quot;Hello from &quot;</span> <span class=hl-operator>&lt;&gt;</span> n)
   })
 }
 
 <span class=hl-keyword>pub</span> <span class=hl-keyword>fn</span> <span class=hl-function>main</span>() {
   <span class=hl-comment>// Run loads of threads, no problem</span>
   <span class=hl-module>list</span>.<span class=hl-function>range</span>(<span class=hl-number>0</span>, <span class=hl-number>200_000</span>)
-  <span class=hl-operator>|></span> <span class=hl-module>list</span>.<span class=hl-function>map</span>(spawn_task)
-  <span class=hl-operator>|></span> <span class=hl-module>list</span>.<span class=hl-function>each</span>(task.await_forever)
+  <span class=hl-operator>|&gt;</span> <span class=hl-module>list</span>.<span class=hl-function>map</span>(spawn_task)
+  <span class=hl-operator>|&gt;</span> <span class=hl-module>list</span>.<span class=hl-function>each</span>(task.await_forever)
 }

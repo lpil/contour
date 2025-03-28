@@ -4,6 +4,7 @@ import gleam/string
 import gleam_community/ansi
 import glexer
 import glexer/token as t
+import houdini
 
 pub type Token {
   Whitespace(String)
@@ -99,22 +100,25 @@ pub fn to_html(code: String) -> String {
   |> list.fold("", fn(acc, token) {
     case token {
       Whitespace(s) -> acc <> s
-      Keyword(s) -> acc <> "<span class=hl-keyword>" <> s <> "</span>"
-      String(s) -> acc <> "<span class=hl-string>" <> s <> "</span>"
-      Number(s) -> acc <> "<span class=hl-number>" <> s <> "</span>"
-      Module(s) -> acc <> "<span class=hl-module>" <> s <> "</span>"
-      Variant(s) -> acc <> "<span class=hl-variant>" <> s <> "</span>"
-      Function(s) -> acc <> "<span class=hl-function>" <> s <> "</span>"
-      Operator(s) -> acc <> "<span class=hl-operator>" <> s <> "</span>"
-      Comment(s) -> acc <> "<span class=hl-comment>" <> s <> "</span>"
-      Other(s) -> acc <> escape(s)
+      Keyword(s) ->
+        acc <> "<span class=hl-keyword>" <> houdini.escape(s) <> "</span>"
+      String(s) ->
+        acc <> "<span class=hl-string>" <> houdini.escape(s) <> "</span>"
+      Number(s) ->
+        acc <> "<span class=hl-number>" <> houdini.escape(s) <> "</span>"
+      Module(s) ->
+        acc <> "<span class=hl-module>" <> houdini.escape(s) <> "</span>"
+      Variant(s) ->
+        acc <> "<span class=hl-variant>" <> houdini.escape(s) <> "</span>"
+      Function(s) ->
+        acc <> "<span class=hl-function>" <> houdini.escape(s) <> "</span>"
+      Operator(s) ->
+        acc <> "<span class=hl-operator>" <> houdini.escape(s) <> "</span>"
+      Comment(s) ->
+        acc <> "<span class=hl-comment>" <> houdini.escape(s) <> "</span>"
+      Other(s) -> acc <> houdini.escape(s)
     }
   })
-}
-
-// TODO: escaping
-fn escape(string: String) -> String {
-  string
 }
 
 fn loop(in0: List(t.Token), out: List(Token)) -> List(Token) {

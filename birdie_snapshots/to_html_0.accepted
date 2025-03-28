@@ -15,5 +15,5 @@ pub fn main() {
 <span class=hl-keyword>import</span> <span class=hl-module>gleam/io</span>
 
 <span class=hl-keyword>pub</span> <span class=hl-keyword>fn</span> <span class=hl-function>main</span>() {
-  <span class=hl-module>io</span>.<span class=hl-function>println</span>(<span class=hl-string>"hello, friend!"</span>)
+  <span class=hl-module>io</span>.<span class=hl-function>println</span>(<span class=hl-string>&quot;hello, friend!&quot;</span>)
 }
