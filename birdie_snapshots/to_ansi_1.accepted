@@ -1,8 +1,8 @@
 ---
 version: 1.2.6
-title: tokens_1
+title: to_ansi_1
 file: ./test/contour_test.gleam
-test_name: tokens_1_test
+test_name: to_ansi_1_test
 ---
 fn spawn_task(i) {
   task.async(fn() {

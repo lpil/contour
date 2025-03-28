@@ -24,7 +24,7 @@ pub type Token {
 /// If you wish to print to the terminal using ansi colours see `to_ansi`.
 ///
 pub fn to_tokens(code: String) -> List(Token) {
-  glexer.new(code) |> glexer.lex() |> list.map(pair.first) |> loop([])
+  glexer.new(code) |> glexer.lex |> list.map(pair.first) |> loop([])
 }
 
 /// Highlight source code using ansi colours!
@@ -33,7 +33,7 @@ pub fn to_tokens(code: String) -> List(Token) {
 /// | ----------------- | ----------- |
 /// | Keyword           | Yellow      |
 /// | Module            | Cyan        |
-/// | Variant           | Green       |
+/// | Variant           | Cyan        |
 /// | Function          | Blue        |
 /// | Operator          | Magenta     |
 /// | Comment           | Italic grey |
@@ -52,7 +52,7 @@ pub fn to_ansi(code: String) -> String {
       String(s) -> ansi.green(s)
       Number(s) -> ansi.green(s)
       Module(s) -> ansi.cyan(s)
-      Variant(s) -> ansi.green(s)
+      Variant(s) -> ansi.cyan(s)
       Function(s) -> ansi.blue(s)
       Operator(s) -> ansi.magenta(s)
       Comment(s) -> ansi.italic(ansi.gray(s))
@@ -60,6 +60,61 @@ pub fn to_ansi(code: String) -> String {
     }
   })
   |> string.concat
+}
+
+/// Convert Gleam code into a HTML string! Each token is wrapped in a `<span>`
+/// with a class indicating the type of token.
+///
+/// | Token             | CSS class   |
+/// | ----------------- | ----------- |
+/// | Keyword           | hl-keyword  |
+/// | Module            | hl-module   |
+/// | Variant           | hl-variant  |
+/// | Function          | hl-function |
+/// | Operator          | hl-operator |
+/// | Comment           | hl-comment  |
+/// | Number            | hl-number   |
+/// | String            | hl-string   |
+/// | Whitespace, other |             |
+///
+/// Place the output within a `<pre><code>...</code></pre>` and add styling for
+/// these CSS classes to get highlightin on your website. Here's some CSS you
+/// could use:
+///
+/// ```css
+/// pre code .hl-comment  { color: #d4d4d4; font-style: italic }
+/// pre code .hl-function { color: #9ce7ff }
+/// pre code .hl-keyword  { color: #ffd596 }
+/// pre code .hl-module   { color: #ffddfa }
+/// pre code .hl-number   { color: #c8ffa7 }
+/// pre code .hl-operator { color: #ffaff3 }
+/// pre code .hl-string   { color: #c8ffa7 }
+/// pre code .hl-variant  { color: #ffddfa }
+/// ```
+///
+/// If you wish to use some other format see `to_tokens`.
+///
+pub fn to_html(code: String) -> String {
+  to_tokens(code)
+  |> list.fold("", fn(acc, token) {
+    case token {
+      Whitespace(s) -> acc <> s
+      Keyword(s) -> acc <> "<span class=hl-keyword>" <> s <> "</span>"
+      String(s) -> acc <> "<span class=hl-string>" <> s <> "</span>"
+      Number(s) -> acc <> "<span class=hl-number>" <> s <> "</span>"
+      Module(s) -> acc <> "<span class=hl-module>" <> s <> "</span>"
+      Variant(s) -> acc <> "<span class=hl-variant>" <> s <> "</span>"
+      Function(s) -> acc <> "<span class=hl-function>" <> s <> "</span>"
+      Operator(s) -> acc <> "<span class=hl-operator>" <> s <> "</span>"
+      Comment(s) -> acc <> "<span class=hl-comment>" <> s <> "</span>"
+      Other(s) -> acc <> escape(s)
+    }
+  })
+}
+
+// TODO: escaping
+fn escape(string: String) -> String {
+  string
 }
 
 fn loop(in0: List(t.Token), out: List(Token)) -> List(Token) {
@@ -156,7 +211,7 @@ fn loop(in0: List(t.Token), out: List(Token)) -> List(Token) {
     [t.VBar, ..in] -> loop(in, [Other("|"), ..out])
 
     [t.Name(n), ..in] -> loop(in, [Other(n), ..out])
-    [t.DiscardName(_), ..in] -> loop(in, [Other("here"), ..out])
+    [t.DiscardName(name), ..in] -> loop(in, [Other("_" <> name), ..out])
 
     [t.UpperName(n), ..in] -> loop(in, [Variant(n), ..out])
 

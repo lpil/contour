@@ -1,8 +1,8 @@
 ---
 version: 1.2.6
-title: tokens_0
+title: to_ansi_0
 file: ./test/contour_test.gleam
-test_name: tokens_0_test
+test_name: to_ansi_0_test
 ---
 import gleam/io
 

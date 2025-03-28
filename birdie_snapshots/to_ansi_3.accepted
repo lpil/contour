@@ -1,0 +1,15 @@
+---
+version: 1.2.6
+title: to_ansi_3
+file: ./test/contour_test.gleam
+test_name: to_ansi_3_test
+---
+pub fn ignore(_whatever, _, _nope: Int) -> Nil {
+  Nil
+}
+
+---
+
+[33mpub[39m[0m [0m[33mfn[39m[0m [0m[34mignore[39m[0m([0m[0m_whatever[0m[0m,[0m[0m [0m[0m_[0m[0m,[0m[0m [0m[0m_nope[0m[0m:[0m[0m [0m[36mInt[39m[0m)[0m[0m [0m[0m->[0m[0m [0m[36mNil[39m[0m [0m[0m{[0m[0m
+  [0m[36mNil[39m[0m
+[0m[0m}[0m

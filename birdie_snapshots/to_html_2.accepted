@@ -1,0 +1,27 @@
+---
+version: 1.2.6
+title: to_html_2
+file: ./test/contour_test.gleam
+test_name: to_html_2_test
+---
+@external(erlang, "Elixir.HPAX", "new")
+pub fn new(size: Int) -> Table
+
+pub fn register_event_handler() {
+  let el = document.query_selector("a")
+  element.add_event_listener(el, fn() {
+    io.println("Clicked!")
+  })
+}
+
+---
+
+<span class=hl-keyword>@external</span>(erlang, <span class=hl-string>"Elixir.HPAX"</span>, <span class=hl-string>"new"</span>)
+<span class=hl-keyword>pub</span> <span class=hl-keyword>fn</span> <span class=hl-function>new</span>(size: <span class=hl-variant>Int</span>) -> <span class=hl-variant>Table</span>
+
+<span class=hl-keyword>pub</span> <span class=hl-keyword>fn</span> <span class=hl-function>register_event_handler</span>() {
+  <span class=hl-keyword>let</span> el = <span class=hl-module>document</span>.<span class=hl-function>query_selector</span>(<span class=hl-string>"a"</span>)
+  <span class=hl-module>element</span>.<span class=hl-function>add_event_listener</span>(el, <span class=hl-keyword>fn</span>() {
+    <span class=hl-module>io</span>.<span class=hl-function>println</span>(<span class=hl-string>"Clicked!"</span>)
+  })
+}
