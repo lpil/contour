@@ -1,0 +1,15 @@
+---
+version: 1.2.6
+title: to_ansi_4
+file: ./test/contour_test.gleam
+test_name: to_ansi_4_test
+---
+pub fn main() -> List(Int) {
+  [1, 2, 3]
+}
+
+---
+
+[33mpub[39m[0m [0m[33mfn[39m[0m [0m[34mmain[39m[0m([0m[0m)[0m[0m [0m[0m->[0m[0m [0m[36mList[39m[0m([0m[36mInt[39m[0m)[0m[0m [0m[0m{[0m[0m
+  [0m[0m[[0m[32m1[39m[0m,[0m[0m [0m[32m2[39m[0m,[0m[0m [0m[32m3[39m[0m][0m[0m
+[0m[0m}[0m

@@ -56,6 +56,14 @@ pub fn to_ansi_3_test() {
   birdie.snap(source <> "\n\n---\n\n" <> contour.to_ansi(source), "to_ansi_3")
 }
 
+pub fn to_ansi_4_test() {
+  let source =
+    "pub fn main() -> List(Int) {
+  [1, 2, 3]
+}"
+  birdie.snap(source <> "\n\n---\n\n" <> contour.to_ansi(source), "to_ansi_4")
+}
+
 pub fn to_html_0_test() {
   let source =
     "import gleam/io
