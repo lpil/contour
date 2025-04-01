@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.1 - 2025-04-01
+
+- Fixed a bug where string formatting would not be preserved.
+
 ## v1.1.0 - 2025-03-28
 
 - Added the `to_html` function.

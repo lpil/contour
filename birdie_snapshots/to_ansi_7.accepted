@@ -1,0 +1,15 @@
+---
+version: 1.2.6
+title: to_ansi_7
+file: ./test/contour_test.gleam
+test_name: to_ansi_7_test
+---
+pub fn main() {
+  "\""
+}
+
+---
+
+[33mpub[39m[0m [0m[33mfn[39m[0m [0m[34mmain[39m[0m([0m[0m)[0m[0m [0m[0m{[0m[0m
+  [0m[32m"\""[39m[0m
+[0m[0m}[0m

@@ -64,6 +64,35 @@ pub fn to_ansi_4_test() {
   birdie.snap(source <> "\n\n---\n\n" <> contour.to_ansi(source), "to_ansi_4")
 }
 
+// Preserve newlines in strings
+pub fn to_ansi_5_test() {
+  let source =
+    "pub fn main() {
+  \"1
+2
+3\"
+}"
+  birdie.snap(source <> "\n\n---\n\n" <> contour.to_ansi(source), "to_ansi_5")
+}
+
+// Preserve \n in strings
+pub fn to_ansi_6_test() {
+  let source =
+    "pub fn main() {
+  \"1\\n2\\n3\"
+}"
+  birdie.snap(source <> "\n\n---\n\n" <> contour.to_ansi(source), "to_ansi_6")
+}
+
+// Escape in string
+pub fn to_ansi_7_test() {
+  let source =
+    "pub fn main() {
+  \"\\\"\"
+}"
+  birdie.snap(source <> "\n\n---\n\n" <> contour.to_ansi(source), "to_ansi_7")
+}
+
 pub fn to_html_0_test() {
   let source =
     "import gleam/io

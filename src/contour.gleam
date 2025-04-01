@@ -138,7 +138,7 @@ fn loop(in0: List(t.Token), out: List(Token)) -> List(Token) {
     [t.Int(i), ..in] -> loop(in, [Number(i), ..out])
     [t.Float(i), ..in] -> loop(in, [Number(i), ..out])
 
-    [t.String(s), ..in] -> loop(in, [String(string.inspect(s)), ..out])
+    [t.String(s), ..in] -> loop(in, [String("\"" <> s <> "\""), ..out])
 
     [t.Import, t.Space(s), t.Name(m), ..in] -> {
       let #(in, m) = loop_import(in, m)
