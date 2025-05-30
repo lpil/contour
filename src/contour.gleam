@@ -129,6 +129,27 @@ fn loop(in0: List(t.Token), out: List(Token)) -> List(Token) {
     [t.Name(m), t.Dot, t.Name(n), t.LeftParen, ..in] ->
       loop(in, [Other("("), Function(n), Other("."), Module(m), ..out])
 
+    [t.Pipe, t.Space(s), t.Name(m), t.Dot, t.Name(n), t.LeftParen, ..in] ->
+      loop(in, [
+        Other("("),
+        Function(n),
+        Other("."),
+        Module(m),
+        Whitespace(s),
+        Operator("|>"),
+        ..out
+      ])
+
+    [t.Pipe, t.Space(s), t.Name(m), t.Dot, t.Name(n), ..in] ->
+      loop(in, [
+        Function(n),
+        Other("."),
+        Module(m),
+        Whitespace(s),
+        Operator("|>"),
+        ..out
+      ])
+
     [t.Name(n), t.LeftParen, ..in] -> loop(in, [Other("("), Function(n), ..out])
 
     [t.CommentModule(c), ..in] -> loop(in, [Comment("////" <> c), ..out])

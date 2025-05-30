@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.0 - 2025-05-30
+
+- Highlighting of pipelines has been improved.
+
 ## v1.1.1 - 2025-04-01
 
 - Fixed a bug where string formatting would not be preserved.

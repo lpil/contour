@@ -93,6 +93,17 @@ pub fn to_ansi_7_test() {
   birdie.snap(source <> "\n\n---\n\n" <> contour.to_ansi(source), "to_ansi_7")
 }
 
+// Pipe no parens
+pub fn to_ansi_8_test() {
+  let source =
+    "pub fn main() {
+  x
+  |> one.two(three)
+  |> four.five
+}"
+  birdie.snap(source <> "\n\n---\n\n" <> contour.to_ansi(source), "to_ansi_8")
+}
+
 pub fn to_html_0_test() {
   let source =
     "import gleam/io
