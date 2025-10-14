@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.1 - 2025-10-13
+
+- Corrected highlighting of bit arrays.
+
 ## v1.2.0 - 2025-05-30
 
 - Highlighting of pipelines has been improved.

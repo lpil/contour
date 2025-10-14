@@ -104,6 +104,15 @@ pub fn to_ansi_8_test() {
   birdie.snap(source <> "\n\n---\n\n" <> contour.to_ansi(source), "to_ansi_8")
 }
 
+// Bit arrays
+pub fn to_ansi_9_test() {
+  let source =
+    "pub fn main() {
+  <<1, 2, 3>>
+}"
+  birdie.snap(source <> "\n\n---\n\n" <> contour.to_ansi(source), "to_ansi_9")
+}
+
 pub fn to_html_0_test() {
   let source =
     "import gleam/io
